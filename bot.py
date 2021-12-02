@@ -24,7 +24,14 @@ def help(update, context):
     """Send a message when the command /audit is issued."""
     update.message.reply_text('https://github.com/TechRate/Smart-Contract-Audits/blob/main/November/NOSHIT.pdf')
 
-
+    def help(update, context):
+    """Send a message when the command /kyc is issued."""
+    update.message.reply_text('https://idopresales.com/kyc-service/noshit-kyc-verification/')
+    
+        def help(update, context):
+    """Send a message when the command /admins is issued."""
+    update.message.reply_text('/price@Poocoin_Pricebot')
+    
 def echo(update, context):
     """Echo the user message."""
     update.message.reply_text(update.message.text)
