@@ -13,12 +13,17 @@ TOKEN = 'YOURTELEGRAMBOTTOKEN'
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi!')
+    """Send a message when the command /website is issued."""
+    update.message.reply_text('noshitcoin.io')
 
 def help(update, context):
-    """Send a message when the command /help is issued."""
-    update.message.reply_text('Help!')
+    """Send a message when the command /contract is issued."""
+    update.message.reply_text('0x53F042f3e809d2DcC9492dE2DbF05d1DA0EF5fbb')
+    
+    def help(update, context):
+    """Send a message when the command /audit is issued."""
+    update.message.reply_text('https://github.com/TechRate/Smart-Contract-Audits/blob/main/November/NOSHIT.pdf')
+
 
 def echo(update, context):
     """Echo the user message."""
