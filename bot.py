@@ -1,3 +1,9 @@
+"""
+NOSHIT COIN TELEGRAM BOT
+Deployed using heroku.
+Author: vuki
+"""
+
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
@@ -8,33 +14,38 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-TOKEN = 'YOURTELEGRAMBOTTOKEN'
+TOKEN = '5073511122:AAHe2s-VgvRPkKQBlDpxai-TESx1gfAtFuw'
 
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
-    """Send a message when the command /website is issued."""
-    update.message.reply_text('noshitcoin.io')
+    """Send a message when the command /start is issued."""
+    update.message.send_text('Hi!')
 
-def help(update, context):
+def website(update, context):
+    """Send a message when the command /website is issued."""
+    update.message.reply_text('https://noshitcoin.io')
+
+def contract(update, context):
     """Send a message when the command /contract is issued."""
     update.message.reply_text('0x53F042f3e809d2DcC9492dE2DbF05d1DA0EF5fbb')
     
-    def help(update, context):
+def audit(update, context):
     """Send a message when the command /audit is issued."""
     update.message.reply_text('https://github.com/TechRate/Smart-Contract-Audits/blob/main/November/NOSHIT.pdf')
 
-    def help(update, context):
-    """Send a message when the command /kyc is issued."""
-    update.message.reply_text('https://idopresales.com/kyc-service/noshit-kyc-verification/')
-    
-        def help(update, context):
-    """Send a message when the command /admins is issued."""
+def chart(update, context):
+    """Send a message when the command /audit is issued."""
     update.message.reply_text('/price@Poocoin_Pricebot')
-    
-def echo(update, context):
-    """Echo the user message."""
-    update.message.reply_text(update.message.text)
+
+def slippage(update, context):
+    """Send a message when the command /contract is issued."""
+    update.message.reply_text('tax:13% | slippage:13-15%')    
+
+
+def locked(update, context):
+    """Send a message when the command /contract is issued."""
+    update.message.reply_text('LP Locked https://dxsale.app/app/v3/dxlplocksearch?id=0&add=0x53F042f3e809d2DcC9492dE2DbF05d1DA0EF5fbb&type=lpdefi&chain=BSC')
 
 def error(update, context):
     """Log Errors caused by Updates."""
@@ -52,10 +63,16 @@ def main():
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("website", website))
+    dp.add_handler(CommandHandler("contract", contract))
+    dp.add_handler(CommandHandler("audit", audit))
+    dp.add_handler(CommandHandler("chart", chart))
+    dp.add_handler(CommandHandler("slippage", slippage))
+    dp.add_handler(CommandHandler("locked", locked))
+     
 
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, echo))
+   
 
     # log all errors
     dp.add_error_handler(error)
@@ -64,7 +81,7 @@ def main():
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
                           url_path=TOKEN)
-    updater.bot.setWebhook('https://yourherokuappname.herokuapp.com/' + TOKEN)
+    updater.bot.setWebhook('https://shrouded-waters-07443.herokuapp.com/' + TOKEN)
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
